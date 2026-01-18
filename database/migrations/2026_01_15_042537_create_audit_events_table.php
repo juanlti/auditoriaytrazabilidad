@@ -23,7 +23,7 @@ return new class extends Migration {
             $table->timestamps();
 
             $table->index('event_type');
-            $table->index('create_at');
+            $table->index('created_at');
         });
     }
 

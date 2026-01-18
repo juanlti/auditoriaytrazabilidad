@@ -25,7 +25,8 @@ class AuditEvent extends Model
 
     protected function casts(): array
     {
-        return ['old_values' => 'array',
+        return [
+            'old_values' => 'array',
             'new_values' => 'array',
             'metadata' => 'array',
         ];
@@ -45,18 +46,17 @@ class AuditEvent extends Model
 
     public function changedFields(): Attribute
     {
-        //devuelve los campos que fueron modificados (siempre y cuando sean auditables)
         return Attribute::make(
-            get: function (): array {
-                if (!$this->old_values || !$this->new_values) {
-                    return [];
-                }
-                return array_keys(array_diff_assoc($this->new_values, $this->old_values));
-            }
-
+            get: fn (): array =>
+            empty($this->old_values) || empty($this->new_values)
+                ? []
+                : array_keys(array_diff_assoc(
+                $this->new_values,
+                $this->old_values
+            ))
         );
-
     }
+
 
     #[Scope]
     protected function forModel($query, Model $model)
