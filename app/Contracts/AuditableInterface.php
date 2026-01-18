@@ -25,7 +25,7 @@ interface AuditableInterface
     //devuelve los datos actuales (antes de guardarse en la bd)
     // se edita el campo edad del modelo user:
     //devuelve la edad actualizada y no la anterior
-    public function getAuditableDate(): array;
+    public function getAuditableData(): array;
 
 
     //devuelve los datos anteriores al actuales

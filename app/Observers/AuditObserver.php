@@ -69,7 +69,8 @@ class AuditObserver
                 $model,
                 'updated',
                 $model->getOriginalAuditableData(),
-                $model->getAuditableDate());
+                $model->getAuditableData()
+            );
         }
     }
 

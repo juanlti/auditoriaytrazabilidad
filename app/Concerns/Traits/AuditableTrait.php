@@ -30,10 +30,10 @@ trait AuditableTrait
 
     public function shouldAudit(string $event): bool
     {
-        return in_array($event, $this->getAuditableFields());
+        return in_array($event, $this->getAuditableEvents());
     }
 
-    public function getAuditableDate(): array
+    public function getAuditableData(): array
     {
 
         $fields = $this->getAuditableFields();
@@ -43,7 +43,7 @@ trait AuditableTrait
     public function getOriginalAuditableData(): array
     {
 
-        $fields = $this->getAuditableDate();
+        $fields = $this->getAuditableData();
         return collect($this->getOriginal())->only($fields)->toArray();
     }
 
