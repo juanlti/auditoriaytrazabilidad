@@ -87,9 +87,7 @@ class AuditSystemTest extends TestCase
 
         $this->assertNotNull($auditEvent);
         $this->assertEquals('updated', $auditEvent->event_type);
-        // $this->assertEquals('Original Product', $auditEvent->old_values['name']);
         $this->assertEquals('Updated Product', $auditEvent->new_values['name']);
-        //   $this->assertEquals(500, $auditEvent->old_values['price']);
         $this->assertEquals(1000, $auditEvent->new_values['price']);
 
 
@@ -114,7 +112,7 @@ class AuditSystemTest extends TestCase
         $this->assertEquals('deleted', $auditEvent->event_type);
         $this->assertNotNull($auditEvent->old_values);
         $this->assertNull($auditEvent->new_values);
-        //   $this->assertEquals('Product to delete', $auditEvent->old_values['name']);
+        $this->assertEquals('Product to delete', $auditEvent->old_values['name']);
 
     }
 
@@ -140,7 +138,7 @@ class AuditSystemTest extends TestCase
         $this->assertEquals('restored', $auditEvent->event_type);
         $this->assertNull($auditEvent->old_values);
         $this->assertNotNull($auditEvent->new_values);
-        // $this->assertEquals('Product to restore', $auditEvent->new_values['name']);
+        $this->assertEquals('Product to restore', $auditEvent->new_values['name']);
 
     }
 

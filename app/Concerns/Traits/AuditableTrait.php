@@ -43,7 +43,7 @@ trait AuditableTrait
     public function getOriginalAuditableData(): array
     {
 
-        $fields = $this->getAuditableData();
+        $fields = $this->getAuditableFields();
         return collect($this->getOriginal())->only($fields)->toArray();
     }
 
